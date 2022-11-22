@@ -7,8 +7,9 @@ RUN pip install -r requirements.txt
 
 COPY . .
 RUN tar -xvf libOPERA2.9_Py.tar.gz
-RUN apt-get update && apt-get install zip unzip libxtst6 libxt6
+RUN apt-get update && apt-get install zip unzip libxtst6 libxt6 default-jre -y
 RUN libOPERA2_Py/OPERA2.9_Py_mcr.install -agreeToLicense yes -mode silent
+
 WORKDIR /usr/local/bin/OPERA/application
 RUN python setup.py install
 ENV XAPPLRESDIR /usr/local/MATLAB/MATLAB_Runtime/v912/X11/app-defaults
